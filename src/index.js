@@ -31,11 +31,15 @@ const books = [
 // console.log(NewNames);
 
 const BookList = () => {
+  const value  = 'Sake and bake';
+   const displayTitle = () => {
+     console.log(value);
+   };
   return (
     <section className="booklist">
       {books.map((book) => {
         const { img, author, title, id } = book;
-        return <Book book2={book} key={book.id} />;
+        return <Book book2={book} key={book.id} displayTitle={displayTitle} />;
       })}
     </section>
   );
@@ -44,14 +48,13 @@ const BookList = () => {
 
 const Book = (props) => {
   const { img, title, author, children } = props.book2;
-  const displayTitle = () =>{
-    console.log(title);
-  }
+  const {displayTitle} = props;
+ 
   return (
     <article className="book">
       <img src={img} alt="Atomic habits" />
       <h2>{title}</h2>
-      <button onClick={displayTitle} >display title</button>
+      <button onClick={displayTitle} >Click me</button>
       <h4>{author}</h4>
       {children}
     </article>
